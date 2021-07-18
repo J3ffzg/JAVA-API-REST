@@ -52,7 +52,4 @@ public class OrderController {
 			return "No se pudo eliminar la orden con id "+id;
 		}
 	}
-
-	
-
 }

@@ -8,9 +8,11 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 import lombok.Data;
+import lombok.Setter;
 
 @Data
 @Entity()
+@Setter
 @Table(name = "ORDER_DETAILS_ENTITY")
 public class OrderDetailsEntity {
     @Id
@@ -31,7 +33,5 @@ public class OrderDetailsEntity {
 
     @Column(name = "totalDetail")
 	private Double totalDetail;
-	
+
 }
-
-
