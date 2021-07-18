@@ -13,9 +13,9 @@ public class OrderDetailsDto {
 
 	private String detail;
 	
-	private Double cantidad;
+	private Double amount;
 
-	private Double precioUnitario;
+	private Double unitPrice;
 
 	private Double totalDetail;
 	

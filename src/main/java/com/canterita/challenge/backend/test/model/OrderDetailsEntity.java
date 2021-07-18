@@ -25,11 +25,11 @@ public class OrderDetailsEntity {
 	@Column(name = "detail")
 	private String detail;
 
-	@Column(name = "cantidad")
-	private Double cantidad;
+	@Column(name = "amount")
+	private Double amount;
 
-    @Column(name = "precioUnitario")
-	private Double precioUnitario;
+    @Column(name = "unitPrice")
+	private Double unitPrice;
 
     @Column(name = "totalDetail")
 	private Double totalDetail;

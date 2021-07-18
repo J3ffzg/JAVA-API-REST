@@ -2,14 +2,8 @@ package com.canterita.challenge.backend.test.service;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.web.servlet.filter.OrderedFormContentFilter;
 import org.springframework.stereotype.Service;
-
-import java.lang.StackWalker.Option;
 import java.util.ArrayList;
-import java.util.Optional;
-
-import javax.persistence.criteria.Order;
 
 import com.canterita.challenge.backend.test.dto.OrderDto;
 import com.canterita.challenge.backend.test.model.OrderEntity;
@@ -28,11 +22,11 @@ public class OrderService implements IOrderService{
 				.orElse(null);
 	}
 
-	public OrderEntity guardarOrden(OrderEntity order){
+	public OrderEntity saveOrder(OrderEntity order){
 		return orderRepository.save(order);
 	}
 
-	public boolean eliminar(Long id){
+	public boolean delete(Long id){
 		try{
 		orderRepository.deleteById(id);
 		return true;
@@ -42,7 +36,7 @@ public class OrderService implements IOrderService{
 		}
 	}
 
-	public ArrayList<OrderEntity>MostrarOrdenes(){
+	public ArrayList<OrderEntity>showOrders(){
 		return (ArrayList<OrderEntity>) orderRepository.findAll();
 	}
 

@@ -13,8 +13,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.ArrayList;
 
-import javax.xml.crypto.dsig.keyinfo.RetrievalMethod;
-
 import com.canterita.challenge.backend.test.dto.OrderDto;
 import com.canterita.challenge.backend.test.model.OrderEntity;
 import com.canterita.challenge.backend.test.service.IOrderService;
@@ -34,20 +32,20 @@ public class OrderController {
 	}
 
 	@GetMapping()
-	public ArrayList<OrderEntity>MostrarOrdenes(){
-		return orderService.MostrarOrdenes();
+	public ArrayList<OrderEntity>showOrders(){
+		return orderService.showOrders();
 	}
 
 	@PostMapping()
-	public OrderEntity guardarOrden(@RequestBody OrderEntity orden){
-		return this.orderService.guardarOrden(orden);
+	public OrderEntity saveOrder(@RequestBody OrderEntity order){
+		return this.orderService.saveOrder(order);
 	}
 
 	@DeleteMapping(value = "/{id}")
-	public String eliminar(@PathVariable("id") Long id){
-		boolean ok = this.orderService.eliminar(id);
+	public String delete(@PathVariable("id") Long id){
+		boolean ok = this.orderService.delete(id);
 		if (ok){
-			return "Orden eliminada";
+			return "Orden con id "+id+" eliminada";
 		}else {
 			return "No se pudo eliminar la orden con id "+id;
 		}
