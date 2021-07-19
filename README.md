@@ -31,7 +31,7 @@ Para hacer las pruebas de las peticiones se puede utilizar [Postman](https://www
 
 <h3>Peticiones Post</h3>
 
-* http://localhost:8080/orders inserta una nueva orden a la base de datos 
+* http://localhost:8080/orders inserta una nueva orden a la base de datos, si se envia el id de la orden actualizan los datos
 * http://localhost:8080/orders/{id}/details inserta un nuevo detalle a la orden con el id enviado
 
 <h1>Configuracion de CORS</h1>
