@@ -23,21 +23,23 @@ public class OrderDetailsController {
     @Autowired
 	private IOrderDetailsService orderDetailsService;
 
+	
     @GetMapping(value = "/{idOrder}/details")
 	@ResponseStatus(HttpStatus.OK)
 	public ArrayList<OrderDetailsEntity> getByIdOrder(@PathVariable("idOrder") Long id){
 		return this.orderDetailsService.getByIdOrder(id);
 	}
-
+	
 	@GetMapping(value = "/details")
 	public ArrayList<OrderDetailsEntity>showDetails(){
 		return orderDetailsService.showDetails();
 	}
-
+	
 	@PostMapping(value = "/{id}/details")
 	public OrderDetailsEntity saveDetails(@RequestBody OrderDetailsDto order, @PathVariable("id") Long id){
 		return this.orderDetailsService.saveDetails(order,id);
 	}
+	
 	@DeleteMapping(value = "/{id}/details")
 	public String delete(@PathVariable("id") Long id){
 		boolean ok = this.orderDetailsService.delete(id);
