@@ -1,27 +1,39 @@
-Como gerente de proyectos, solicito la implementación de una aplicación de simulación de pedidos en un Restaurante, con la finalidad de poder evaluar habilidades, conocimientos y aptitudes de los aspirantes a desarrolladores en Kruger Corp Ecuador.
+<h1>Kanterita Java-Api-Rest</h1>
 
-El reto está dividido en 2 partes:
+Este programa API-REST permite dar solucion a la problematica de pedidos de un Restarante mediante peticiones http para:
+* Registrar un nuevo detalle a una orden existente.
+* Visualizar todos los detalles de una orden.
+* Eliminar los detalles de una orden
+* Actualizar los datos del Usuario
 
+<h1>Usar el proyecto</h1>
 
-1. (Back-end) Se les entregará una aplicación simple REST creada con Spring Boot (restaurant-order-main.zip).  Actualmente, la aplicación puede traer una orden ejecutando un request GET en `/orders/{id}`, donde `{id}` es el identificador de la orden. (Se está
-utilizando la base de datos “H2” de desarrollo)
+* Para usar el proyecto se lo debe clonar o descargar en .zip luego abrir el proyecto con cualquier IDE de desarrollo compatible con el lenguaje de programacion JAVA. Se debe tener instalada la libreria [Lombok](https://projectlombok.org/), la cual permite optimizar codigo evitando declarar los setters, gettets y constructores de la clase.
+* Creamos una base de datos en mysql con el nombre kanterita.
+* En la carpeta resources del proyectoa abrimos el archivo application.properties y procedemos a cambiar las credenciales como usuario y contraseña como se muestra a continuacion
+  * spring.datasource.url=jdbc:mysql://127.0.0.1:3306/kanterita?serverTimezone=UTC
+  * spring.datasource.username=root
+  * spring.datasource.password=
+  * spring.jpa.hibernate.ddl-auto=update
+* En caso de tener corriendo la base de datos se debe cambiar el puerto
+* Una vez instalada la libreria necesaria, procedemos a ejecutar el programa principal.
+* El programa se ejecuta en http://localhost:8080.
 
+<h1>Peticiones</h1>
 
-Su tarea es añadir detalles a la orden con id{1}, por lo que  la aplicación debe soportar estos requests:
-a) POST a /orders/{1}/details - que debería guardar un nuevo detalle para la orden con el {id} enviado.
-b) GET a /orders/{1}/details - que debería retornar todos los detalles de una orden con el {id} enviado.
+Para hacer las pruebas de las peticiones se puede utilizar [Postman](https://www.postman.com/) copiamos la direccion http://localhost:8080 
+<h3>Peticiones Get</h3>
 
-2. (Front-end) Elaborar una aplicación web o móvil para visualizar un pedido con todos sus detalles ingresando como criterio de búsqueda el {id} de la orden. Pueden usar tecnologías de vanguardia como Angular, Reactjs, Vuejs, etc.
+* http://localhost:8080/orders devuelve todas las ordenes que se encuentren registradas
+* http://localhost:8080/orders/{id} devuelve la orden con el id enviado 
+* http://localhost:8080/orders/{id}/details devuelve todas los detalles del orden con el id enviado
+* http://localhost:8080/orders/details devuelve todos los detalles registrados
 
-Criterios de evaluación:
-Objetivos cumplidos
-Limpieza de código, separación de capas
-Calidad de documentación
-Calidad de código
-Pruebas unitarias (importante aplicar TDD)
-Estética
-Desenvolvimiento en la presentación del producto
-¿Cómo envío el reto?
+<h3>Peticiones Post</h3>
 
-Adjuntar el link del repositorio subido en Github o Bitbucket tanto de backend como de frontend.
-Recordar dar clic en el botón "Marcar como tarea completada", al finalizar la tarea.
+* http://localhost:8080/orders inserta una nueva orden a la base de datos 
+* http://localhost:8080/orders/{id}/details inserta un nuevo detalle a la orden con el id enviado
+
+<h1>Configuracion de CORS</h1>
+
+Para realizar las configuraciones de CORS solo nos dirigimos al archivo principal del proyecto RestaurantApplication.java y se procede a modificar las peticiones permitidas, los metodos, las direcciones validas y la configuracion de los headers
